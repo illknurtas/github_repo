@@ -46,9 +46,14 @@ function getData(e){
 }
 function clearAllSearched(){
     // clear all history 
+    if(confirm("Are you sure you want to delete all?")){
+        Storage.clearAllSearchedUsersFromStorage();
+        ui.clearAllSearchedFromUI();
+    }
 }
 function getAllSearched(){
     //add the searchings to UI by taking from the storage
+
     let users = Storage.getSearchedUsersFromStorage();
     let result = "";
     users.forEach(user =>{

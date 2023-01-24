@@ -32,6 +32,9 @@ function getData(e){
                 ui.showError("User Not Found!");
             }
             else{
+                ui.addSearchedUserToUI(username);
+
+                Storage.addSearchedUserToStorage(username);
                 ui.showUserInfo(response.user);
                 ui.showRepoInfo(response.repo);
             }
@@ -46,5 +49,11 @@ function clearAllSearched(){
 }
 function getAllSearched(){
     //add the searchings to UI by taking from the storage
-
+    let users = Storage.getSearchedUsersFromStorage();
+    let result = "";
+    users.forEach(user =>{
+        // <li class="list-group-item">asdaskdjkasjkşdjşasjd</li>
+        result += `<li class="list-group-item">${user}</li>`
+    });
+    lastUsers.innerHTML = result;
 }

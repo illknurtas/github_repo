@@ -72,16 +72,23 @@ class UI{
                     <button class="btn btn-secondary">
                         Starred:  <span class="badge badge-light" id="repoStar">${repo.stargazers_count}</span>
                     </button>
-
                     <button class="btn btn-info">
                         Forked: <span class="badge badge-light" id ="repoFork">${repo.forks_count}</span>
                     </button>
             
                 </div>
-        </div>
-
+            </div>
         </div>
             `;
         });
+    }
+    addSearchedUserToUI(username){
+        let users = Storage.getSearchedUsersFromStorage();
+        if(users.indexOf(username)===-1){
+            const li = document.createElement('li');
+            li.className = 'list-group-item';
+            li.textContent = username;
+            this.lastUsers.appendChild(li);
+        }
     }
 }

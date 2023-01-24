@@ -33,10 +33,9 @@ function getData(e){
             }
             else{
                 ui.showUserInfo(response.user);
+                ui.showRepoInfo(response.repo);
             }
         })
-        // .then(response => console.log(response.user))//user information
-        // .then(response => console.log(response.repo))//repo information
         .catch(err =>ui.showError(err));
     }
     ui.clearInput();//clear input

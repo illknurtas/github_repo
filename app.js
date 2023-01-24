@@ -28,7 +28,8 @@ function getData(e){
         github.getGithubData(username)
         .then(response => {
             if(response.user.message ==="Not Found"){
-                console.log("User Not Found!");
+                // console.log("User Not Found!");
+                ui.showError("User Not Found!");
             }
             else{
                 ui.showUserInfo(response.user);
@@ -36,13 +37,13 @@ function getData(e){
         })
         // .then(response => console.log(response.user))//user information
         // .then(response => console.log(response.repo))//repo information
-        .catch(error => console.log(error));
+        .catch(err =>ui.showError(err));
     }
     ui.clearInput();//clear input
     e.preventDefault();
 }
 function clearAllSearched(){
-    // clear akk history 
+    // clear all history 
 }
 function getAllSearched(){
     //add the searchings to UI by taking from the storage
